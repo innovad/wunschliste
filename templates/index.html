@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background: #ffba00">
+
+<h1>Wunschliste</h1>
+
+<ul>
+{% for wish in wishes %}
+    <li>{{wish}}</li>
+{%endfor%}
+</ul>
+
+<form action="/" method = "POST">
+    <p>Wunsch hinzufügen <input type = "text" name = "wish" /></p>
+    <p><input type = "submit" value = "Abschicken" /></p>
+</form>
+
+<form action="/delete" method = "POST">
+    <p><input type = "submit" value = "Alle löschen" /></p>
+</form>
+
+
+<img src="{{url_for('static', filename='pit.svg')}}">
+
+</body>
+</html>
