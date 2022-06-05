@@ -11,6 +11,10 @@ def test():  # put application's code here
 def hello_world():  # put application's code here
     if not 'wishes' in session:
         session['wishes'] = []
+    wish = request.args.get('nr')
+    if wish is not None:
+        session['wishes'].remove(wish)
+        session.modified = True
     return render_template('index.html', wishes=session['wishes'])
 
 @app.route('/', methods=['POST'])

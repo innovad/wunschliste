@@ -13,14 +13,20 @@
 
     <h1>Wunschliste</h1>
 
+    {% if wishes|length == 1 %}
+        <p>Sie haben {{ wishes|length }} Wunsch</p>
+    {% else %}
+        <p>Sie haben {{ wishes|length }} Wünsche</p>
+    {% endif %}
+
     <ul>
         {% for wish in wishes %}
-            <li>{{ wish }}</li>
+            <li>{{ wish }} <a href="/?nr={{ wish }}">X</a></li>
         {% endfor %}
     </ul>
 
     <form action="/" method="POST">
-        <p>Wunsch hinzufügen <input type="text" name="wish"/></p>
+        <p>Wunsch hinzufügen <input type="text" autofocus name="wish"/></p>
         <p><input type="submit" value="Abschicken"/></p>
     </form>
 
@@ -30,6 +36,8 @@
 
 
     <img src="{{ url_for('static', filename='pit.svg') }}">
+
+    &#169;2022 mw jl am
 
 </div>
 
